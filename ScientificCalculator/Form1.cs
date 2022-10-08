@@ -61,5 +61,33 @@ namespace ScientificCalculator
                     toDate.Value = fromDate.Value;
             }
         }
+
+        private void color_Calculator(object sender, EventArgs e)
+        {
+            ColorDialog calcColor = new ColorDialog();
+            if (calcColor.ShowDialog() == DialogResult.OK)
+            {
+                tableLayoutPanel1.BackColor = calcColor.Color;
+            }
+        }
+
+        private void dayColor(object sender, EventArgs e)
+        {
+            ColorDialog dayColored = new ColorDialog();
+            if (dayColored.ShowDialog() == DialogResult.OK)
+            {
+                splitContainer2.Panel2.BackColor = dayColored.Color;
+            }
+        }
+
+        private void graphColor(object sender, EventArgs e)
+        {
+            ColorDialog graphColored = new ColorDialog();
+            if (graphColored.ShowDialog() == DialogResult.OK)
+            {
+                splitContainer1.Panel2.BackColor = graphColored.Color;
+            }
+            
+        }
     }
 }
