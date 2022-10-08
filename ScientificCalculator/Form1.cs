@@ -31,5 +31,35 @@ namespace ScientificCalculator
         {
 
         }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (((DateTimePicker)sender).ContainsFocus)
+            {
+                DateTime to = toDate.Value;
+                DateTime from = fromDate.Value;
+                numericUpDown1.Value = to.Subtract(from).Days;
+                numericUpDown1.Value = numericUpDown1.Value + (decimal)1;
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDown1.ContainsFocus)
+            {
+                decimal count = numericUpDown1.Value;
+                if (count > 0)
+                    toDate.Value = fromDate.Value.AddDays((double)count);
+                else if (count < 0)
+                    fromDate.Value = toDate.Value.AddDays((double)-count);
+                else
+                    toDate.Value = fromDate.Value;
+            }
+        }
     }
 }
