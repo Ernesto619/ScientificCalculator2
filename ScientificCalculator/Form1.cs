@@ -24,6 +24,11 @@ namespace ScientificCalculator
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+        
+        }
+
+        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
