@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace ScientificCalculator
 {
     public partial class Form1 : Form
     {
+
+        private int ticks = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +23,7 @@ namespace ScientificCalculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            timer1.Start();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -87,7 +91,15 @@ namespace ScientificCalculator
             {
                 splitContainer1.Panel2.BackColor = graphColored.Color;
             }
-            
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Good Day! Today is " + DateTime.Now;
         }
     }
 }
