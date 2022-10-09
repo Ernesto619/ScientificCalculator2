@@ -17,6 +17,7 @@ namespace ScientificCalculator
         String result = "";
         String equation = "";
         double num;
+        Boolean operation = false;
 
         public Form1()
         {
@@ -110,36 +111,36 @@ namespace ScientificCalculator
             toolStripStatusLabel1.Text = "Good Day! Today is " + DateTime.Now;
         }
 
-        private void digits_Click(object sender, EventArgs e)
+        private void digits_Click(object sender, EventArgs e)//========================
         {
             Button b = (Button)sender;
             equation += b.Text;
             textBox1.Text += b.Text;
-
         }
 
-        private void operation_Click(object sender, EventArgs e)
+        private void operation_Click(object sender, EventArgs e) //==================
         {
             Button b = (Button)sender;
             equation += " " + b.Text + " ";
-            textBox1.Text = b.Text + " "; 
+            textBox1.Text = "";
+            operation = true;
         }
 
-        private void numberSign_Click(object sender, EventArgs e)
+        private void numberSign_Click(object sender, EventArgs e) //===================
         {
-            if(textBox1.Text.Contains('-'))
+            num = Convert.ToInt32(textBox1.Text);
+            num *= -1;
+            textBox1.Text = num.ToString();
+            if(operation == true)
             {
-                textBox1.Text.Remove('-');
-            }
-            if (!textBox1.Text.Contains('-'))
-            {
-                textBox1.Text += "-";
+                equation += num.ToString();
             }
         }
 
         private void percent_Click(object sender, EventArgs e)
         {
             textBox1.Text += "/100 ";
+            equation += "/100";
         }
 
         private void OneOverX_Click(object sender, EventArgs e)
@@ -174,13 +175,13 @@ namespace ScientificCalculator
             textBox1.Text = result;
         }
 
-        private void clear_Click(object sender, EventArgs e)  //-------------------------------
+        private void clear_Click(object sender, EventArgs e) 
         {
             textBox1.Text = "";
             equation = "";
         }
 
-        private void CE_Click(object sender, EventArgs e) //--------------------------------------
+        private void CE_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
         }
