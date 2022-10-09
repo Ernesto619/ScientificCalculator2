@@ -15,6 +15,7 @@ namespace ScientificCalculator
         String calcHistory = "";
         String SavedCalcHistory = "";
         String result = "";
+        String equation = "";
         double num;
 
         public Form1()
@@ -112,6 +113,7 @@ namespace ScientificCalculator
         private void digits_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
+            equation += b.Text;
             textBox1.Text += b.Text;
 
         }
@@ -119,7 +121,8 @@ namespace ScientificCalculator
         private void operation_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
-            textBox1.Text += " " + b.Text + " ";
+            equation += " " + b.Text + " ";
+            textBox1.Text = b.Text + " "; 
         }
 
         private void numberSign_Click(object sender, EventArgs e)
@@ -165,20 +168,21 @@ namespace ScientificCalculator
 
         private void equals_Click(object sender, EventArgs e)
         {
-            result = textBox1.Text;
-            result = new DataTable().Compute(textBox1.Text, null).ToString();
-            calcHistory += textBox1.Text + " = " + result + "\n";
+            result = equation;
+            result = new DataTable().Compute(equation, null).ToString();
+            calcHistory += equation + " = " + result + "\n";
             textBox1.Text = result;
         }
 
         private void clear_Click(object sender, EventArgs e)  //-------------------------------
         {
             textBox1.Text = "";
+            equation = "";
         }
 
         private void CE_Click(object sender, EventArgs e) //--------------------------------------
         {
-
+            textBox1.Text = "";
         }
 
         private void calcHistory_Click(object sender, EventArgs e)
@@ -198,7 +202,7 @@ namespace ScientificCalculator
 
         private void printCalcHistory_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void about_Click(object sender, EventArgs e)
