@@ -17,7 +17,6 @@ namespace ScientificCalculator
         String result = "";
         String equation = "";
         double num;
-        Boolean operation = false;
 
         public Form1()
         {
@@ -123,7 +122,6 @@ namespace ScientificCalculator
             Button b = (Button)sender;
             equation += " " + b.Text + " ";
             textBox1.Text = "";
-            operation = true;
         }
 
         private void numberSign_Click(object sender, EventArgs e) //===================
@@ -131,10 +129,6 @@ namespace ScientificCalculator
             num = Convert.ToInt32(textBox1.Text);
             num *= -1;
             textBox1.Text = num.ToString();
-            if(operation == true)
-            {
-                equation += num.ToString();
-            }
         }
 
         private void percent_Click(object sender, EventArgs e)
@@ -146,24 +140,21 @@ namespace ScientificCalculator
         private void OneOverX_Click(object sender, EventArgs e)
         {
             textBox1.Text += "1/";
+            equation += textBox1.Text;
         }
 
         private void square_Click(object sender, EventArgs e)
         {
-            calcHistory += textBox1.Text + " Sqaured = ";
-            num = Convert.ToInt32(textBox1.Text);
-            num = Math.Pow(num, 2);
-            textBox1.Text = num.ToString();
-            calcHistory += textBox1.Text + "\n";
+            equation += " * " + textBox1.Text;
         }
 
         private void sqRoot_click(object sender, EventArgs e)
         {
-            calcHistory += "Square Root of " + textBox1.Text + " = ";
             num = Convert.ToInt32(textBox1.Text);
             num = Math.Sqrt(num);
             textBox1.Text = num.ToString();
             calcHistory += textBox1.Text + "\n";
+            equation += num.ToString();
             
         }
 
