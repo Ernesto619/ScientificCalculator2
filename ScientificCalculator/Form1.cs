@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace ScientificCalculator
 {
     public partial class Form1 : Form
     {
-
-        private int ticks = 0;
+        String calcHistory = "";
+        String SavedCalcHistory = "";
+        String result = "";
+        double num;
 
         public Form1()
         {
@@ -93,13 +94,116 @@ namespace ScientificCalculator
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void calcFontChange_Click(object sender, EventArgs e)
         {
+            FontDialog font = new FontDialog();
+            if (font.ShowDialog() != DialogResult.Cancel)
+            {
+                textBox1.Font = font.Font;
+            }
 
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = "Good Day! Today is " + DateTime.Now;
+        }
+
+        private void digits_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            textBox1.Text += b.Text;
+
+        }
+
+        private void operation_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            textBox1.Text += " " + b.Text + " ";
+        }
+
+        private void numberSign_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text.Contains('-'))
+            {
+                textBox1.Text.Remove('-');
+            }
+            if (!textBox1.Text.Contains('-'))
+            {
+                textBox1.Text += "-";
+            }
+        }
+
+        private void percent_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "/100 ";
+        }
+
+        private void OneOverX_Click(object sender, EventArgs e)
+        {
+            textBox1.Text += "1/";
+        }
+
+        private void square_Click(object sender, EventArgs e)
+        {
+            calcHistory += textBox1.Text + " Sqaured = ";
+            num = Convert.ToInt32(textBox1.Text);
+            num = Math.Pow(num, 2);
+            textBox1.Text = num.ToString();
+            calcHistory += textBox1.Text + "\n";
+        }
+
+        private void sqRoot_click(object sender, EventArgs e)
+        {
+            calcHistory += "Square Root of " + textBox1.Text + " = ";
+            num = Convert.ToInt32(textBox1.Text);
+            num = Math.Sqrt(num);
+            textBox1.Text = num.ToString();
+            calcHistory += textBox1.Text + "\n";
+            
+        }
+
+        private void equals_Click(object sender, EventArgs e)
+        {
+            result = textBox1.Text;
+            result = new DataTable().Compute(textBox1.Text, null).ToString();
+            calcHistory += textBox1.Text + " = " + result + "\n";
+            textBox1.Text = result;
+        }
+
+        private void clear_Click(object sender, EventArgs e)  //-------------------------------
+        {
+            textBox1.Text = "";
+        }
+
+        private void CE_Click(object sender, EventArgs e) //--------------------------------------
+        {
+
+        }
+
+        private void calcHistory_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(calcHistory + "\n" + "\nSaved History:\n" + SavedCalcHistory);
+        }
+
+        private void clearCalcHistory_Click(object sender, EventArgs e)
+        {
+            calcHistory = "";
+        }
+
+        private void saveCalcHistory_Click(object sender, EventArgs e)
+        {
+            SavedCalcHistory += calcHistory;
+        }
+
+        private void printCalcHistory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is a scientific calculator with nice graphs!\n\n By: Ernesto Riera & Samuel Pellot");
         }
     }
 }

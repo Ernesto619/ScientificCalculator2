@@ -49,12 +49,14 @@
             this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyCalculatorDisplayFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dayCounterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphSectionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -130,8 +132,8 @@
             this.Calculator = new System.Windows.Forms.ToolStripMenuItem();
             this.dayCounterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphSectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -190,18 +192,21 @@
             this.clearCalculatorHistoryToolStripMenuItem.Name = "clearCalculatorHistoryToolStripMenuItem";
             this.clearCalculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(311, 26);
             this.clearCalculatorHistoryToolStripMenuItem.Text = "Clear calculator history";
+            this.clearCalculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.clearCalcHistory_Click);
             // 
             // saveCalculatorHistoryToolStripMenuItem
             // 
             this.saveCalculatorHistoryToolStripMenuItem.Name = "saveCalculatorHistoryToolStripMenuItem";
             this.saveCalculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(311, 26);
             this.saveCalculatorHistoryToolStripMenuItem.Text = "Save calculator history";
+            this.saveCalculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.saveCalcHistory_Click);
             // 
             // printCalculatorHistoryToolStripMenuItem
             // 
             this.printCalculatorHistoryToolStripMenuItem.Name = "printCalculatorHistoryToolStripMenuItem";
             this.printCalculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(311, 26);
             this.printCalculatorHistoryToolStripMenuItem.Text = "Print calculator history";
+            this.printCalculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.printCalcHistory_Click);
             // 
             // toolStripSeparator8
             // 
@@ -248,6 +253,7 @@
             this.calculatorHistoryToolStripMenuItem.Name = "calculatorHistoryToolStripMenuItem";
             this.calculatorHistoryToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.calculatorHistoryToolStripMenuItem.Text = "Calculator history";
+            this.calculatorHistoryToolStripMenuItem.Click += new System.EventHandler(this.calcHistory_Click);
             // 
             // toolStripSeparator10
             // 
@@ -286,12 +292,38 @@
             this.modifyCalculatorDisplayFontToolStripMenuItem.Name = "modifyCalculatorDisplayFontToolStripMenuItem";
             this.modifyCalculatorDisplayFontToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.modifyCalculatorDisplayFontToolStripMenuItem.Text = "Modify calculator display font";
+            this.modifyCalculatorDisplayFontToolStripMenuItem.Click += new System.EventHandler(this.calcFontChange_Click);
             // 
             // modifyBackgroundColorToolStripMenuItem
             // 
+            this.modifyBackgroundColorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.calculatorToolStripMenuItem,
+            this.dayCounterToolStripMenuItem1,
+            this.graphSectionToolStripMenuItem1});
             this.modifyBackgroundColorToolStripMenuItem.Name = "modifyBackgroundColorToolStripMenuItem";
             this.modifyBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.modifyBackgroundColorToolStripMenuItem.Text = "Modify background color";
+            // 
+            // calculatorToolStripMenuItem
+            // 
+            this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.color_Calculator);
+            // 
+            // dayCounterToolStripMenuItem1
+            // 
+            this.dayCounterToolStripMenuItem1.Name = "dayCounterToolStripMenuItem1";
+            this.dayCounterToolStripMenuItem1.Size = new System.Drawing.Size(185, 26);
+            this.dayCounterToolStripMenuItem1.Text = "Day Counter";
+            this.dayCounterToolStripMenuItem1.Click += new System.EventHandler(this.dayColor);
+            // 
+            // graphSectionToolStripMenuItem1
+            // 
+            this.graphSectionToolStripMenuItem1.Name = "graphSectionToolStripMenuItem1";
+            this.graphSectionToolStripMenuItem1.Size = new System.Drawing.Size(185, 26);
+            this.graphSectionToolStripMenuItem1.Text = "Graph Section";
+            this.graphSectionToolStripMenuItem1.Click += new System.EventHandler(this.graphColor);
             // 
             // helpToolStripMenuItem
             // 
@@ -306,6 +338,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.about_Click);
             // 
             // toolStripContainer1
             // 
@@ -316,9 +349,8 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.dateTimePicker2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1071, 543);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1071, 545);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -347,20 +379,13 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1131, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
             this.statusStrip1.TabIndex = 0;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 18);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 1;
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 16);
             // 
             // splitContainer1
             // 
@@ -381,7 +406,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.listBox1);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip2);
-            this.splitContainer1.Size = new System.Drawing.Size(1071, 543);
+            this.splitContainer1.Size = new System.Drawing.Size(1071, 545);
             this.splitContainer1.SplitterDistance = 457;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -409,7 +434,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.fromDate);
             this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Panel2MinSize = 150;
-            this.splitContainer2.Size = new System.Drawing.Size(457, 543);
+            this.splitContainer2.Size = new System.Drawing.Size(457, 545);
             this.splitContainer2.SplitterDistance = 329;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -472,6 +497,7 @@
             this.button24.TabIndex = 24;
             this.button24.Text = "=";
             this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.equals_Click);
             // 
             // button23
             // 
@@ -484,6 +510,7 @@
             this.button23.TabIndex = 23;
             this.button23.Text = ".";
             this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.digits_Click);
             // 
             // button22
             // 
@@ -496,6 +523,7 @@
             this.button22.TabIndex = 22;
             this.button22.Text = "0";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.digits_Click);
             // 
             // button21
             // 
@@ -508,6 +536,7 @@
             this.button21.TabIndex = 21;
             this.button21.Text = "+/-";
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.numberSign_Click);
             // 
             // button20
             // 
@@ -521,6 +550,7 @@
             this.button20.TabIndex = 20;
             this.button20.Text = "+";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.operation_Click);
             // 
             // button19
             // 
@@ -533,6 +563,7 @@
             this.button19.TabIndex = 19;
             this.button19.Text = "3";
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.digits_Click);
             // 
             // button18
             // 
@@ -545,6 +576,7 @@
             this.button18.TabIndex = 18;
             this.button18.Text = "2";
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.digits_Click);
             // 
             // button17
             // 
@@ -557,6 +589,7 @@
             this.button17.TabIndex = 17;
             this.button17.Text = "1";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.digits_Click);
             // 
             // button16
             // 
@@ -570,6 +603,7 @@
             this.button16.TabIndex = 16;
             this.button16.Text = "-";
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.operation_Click);
             // 
             // button15
             // 
@@ -582,6 +616,7 @@
             this.button15.TabIndex = 15;
             this.button15.Text = "6";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.digits_Click);
             // 
             // button14
             // 
@@ -594,6 +629,7 @@
             this.button14.TabIndex = 14;
             this.button14.Text = "5";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.digits_Click);
             // 
             // button13
             // 
@@ -606,18 +642,21 @@
             this.button13.TabIndex = 13;
             this.button13.Text = "4";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.digits_Click);
             // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.Location = new System.Drawing.Point(345, 158);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(109, 36);
             this.button12.TabIndex = 12;
-            this.button12.Text = "X";
+            this.button12.Text = "*";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.operation_Click);
             // 
             // button11
             // 
@@ -630,6 +669,7 @@
             this.button11.TabIndex = 11;
             this.button11.Text = "9";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.digits_Click);
             // 
             // button10
             // 
@@ -642,6 +682,7 @@
             this.button10.TabIndex = 10;
             this.button10.Text = "8";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.digits_Click);
             // 
             // button9
             // 
@@ -654,7 +695,7 @@
             this.button9.TabIndex = 9;
             this.button9.Text = "7";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.digits_Click);
             // 
             // button8
             // 
@@ -667,6 +708,7 @@
             this.button8.TabIndex = 8;
             this.button8.Text = "/";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.operation_Click);
             // 
             // button7
             // 
@@ -677,8 +719,9 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(108, 36);
             this.button7.TabIndex = 7;
-            this.button7.Text = "Sq Root";
+            this.button7.Text = "Sqrt";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.sqRoot_click);
             // 
             // button6
             // 
@@ -691,6 +734,7 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "SQUARE";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.square_Click);
             // 
             // button5
             // 
@@ -703,6 +747,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "1/X";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.OneOverX_Click);
             // 
             // button4
             // 
@@ -715,6 +760,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "CLEAR";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.clear_Click);
             // 
             // button3
             // 
@@ -727,6 +773,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "C";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.clear_Click);
             // 
             // button2
             // 
@@ -739,11 +786,13 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "CE";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.CE_Click);
             // 
             // textBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 4);
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -763,6 +812,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "%";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.percent_Click);
             // 
             // splitter2
             // 
@@ -847,7 +897,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 387);
+            this.label6.Location = new System.Drawing.Point(40, 367);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 16);
             this.label6.TabIndex = 5;
@@ -866,7 +916,7 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(43, 406);
+            this.listBox2.Location = new System.Drawing.Point(43, 386);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(529, 84);
             this.listBox2.TabIndex = 3;
@@ -884,7 +934,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 511);
+            this.splitter1.Size = new System.Drawing.Size(3, 513);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -894,7 +944,7 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.toolStripStatusLabel2});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 511);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 513);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(610, 32);
             this.statusStrip2.TabIndex = 0;
@@ -1188,13 +1238,6 @@
             this.graphSectionToolStripMenuItem.Text = "Graph Section";
             this.graphSectionToolStripMenuItem.Click += new System.EventHandler(this.graphColor);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 2;
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -1205,7 +1248,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 622);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -1354,9 +1396,11 @@
         private System.Windows.Forms.ToolStripMenuItem Calculator;
         private System.Windows.Forms.ToolStripMenuItem dayCounterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem graphSectionToolStripMenuItem;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dayCounterToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem graphSectionToolStripMenuItem1;
     }
 }
 
