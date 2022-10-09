@@ -3,24 +3,38 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Windows.Forms.VisualStyles;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+
+
 namespace ScientificCalculator
 {
     public partial class Form1 : Form
     {
+
+
+       
+        List<String> Filelist = new List<String>();
+        GraphAlgorithms g;
+
         String calcHistory = "";
         String SavedCalcHistory = "";
         String result = "";
         String equation = "";
         double num;
 
+
         public Form1()
         {
             InitializeComponent();
+            g = new GraphAlgorithms(toolStripProgressBar1, toolStripStatusLabel2, statusStrip2);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,7 +124,158 @@ namespace ScientificCalculator
             toolStripStatusLabel1.Text = "Good Day! Today is " + DateTime.Now;
         }
 
-        private void digits_Click(object sender, EventArgs e)//========================
+        private void TxtMatrix(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select File";
+            openFileDialog.Filter = "txt files(*.txt)| *.txt";
+            
+            if (openFileDialog.ShowDialog() == DialogResult.OK) //test
+            {
+                g.ReadGraphFromTXTFile(openFileDialog.FileName);
+                Filelist.Add(openFileDialog.FileName);
+
+                listBox1.Items.Clear();
+
+
+                for (int i = Filelist.Count - 1; i >= 0; i--)
+                {
+                    listBox1.Items.Add(Filelist[i]);
+
+                }
+            }
+            
+        }
+
+        private void csvMatrix(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select File";
+            openFileDialog.Filter = "csv files(*.csv)| *.csv";
+            
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+
+                g.ReadGraphFromCSVFile(openFileDialog.FileName);
+                Filelist.Add(openFileDialog.FileName);
+
+                listBox1.Items.Clear();
+
+                for (int i = Filelist.Count - 1; i >= 0; i--)
+                {
+                    listBox1.Items.Add(Filelist[i]);
+                }
+            }
+
+            
+        }
+
+        private void txtcsvMatrix(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select File";
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "all supported(*.csv,*.txt)| *.csv; *.txt | csv files(*.csv) | *.csv | txt files(*.txt) | *.txt";
+            
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                foreach (string file in openFileDialog.FileNames)
+                {
+                    if (file[file.Length-1] == 't' ) //if .txt
+                    {
+                        g.ReadGraphFromTXTFile(file);
+                        Filelist.Add(file);
+                    }
+                    else
+                    {
+                        g.ReadGraphFromCSVFile(file);
+                        Filelist.Add(file);
+                    }
+                    //Bothlist.Add(openFileDialog.FileName);
+
+                }
+                listBox1.Items.Clear();
+                for (int i = Filelist.Count - 1; i >= 0; i--)
+                {
+                    listBox1.Items.Add(Filelist[i]);
+                }
+
+
+            }
+        }
+
+        private void deleteGraph(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null) return;
+            Filelist.Remove(listBox1.SelectedItem.ToString());
+            listBox1.Items.Remove(listBox1.SelectedItem.ToString());
+            
+            Console.WriteLine(Filelist.Count);
+            
+            
+        }
+
+        private void deleteAllGraphs(object sender, EventArgs e)
+        {
+            if (Filelist.Count == 0) return;
+            for (int i = Filelist.Count - 1; i >= 0; i--)
+            {
+                listBox1.Items.Remove(Filelist[i]); //maybe to string
+                Filelist.RemoveAt(i);
+
+            }
+            Console.WriteLine(Filelist.Count());
+        }
+
+        private void primAlgorithm(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null) return;
+            g.GetMST(listBox1.SelectedItem.ToString());
+            listBox2.Items.Add("MST: " + listBox1.SelectedItem);
+
+
+        }
+
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dijkstraAlgorithm(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null) return; // here is the glitch...
+            g.Dijkstra((listBox1.SelectedItem.ToString()));
+            listBox2.Items.Add("Shortest Paths: " + listBox1.SelectedItem);
+        }
+
+        private void saveGraphOperation(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItem == null) return;
+            if (((listBox2.SelectedItem).ToString())[0] == 'M')
+            //if selected file was done by prim's algorithm
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //g.WriteMSTSolutionTo(AccessibleName, saveFileDialog.FileName);
+                    g.WriteMSTSolutionTo(saveFileDialog.FileName, listBox1.SelectedItem.ToString());
+                }
+            }
+            else // if selected file was done by djiskta's alg.
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    g.WriteSSSPSolutionTo(saveFileDialog.FileName, listBox1.SelectedItem.ToString());
+                }
+            }
+            listBox2.Items.Remove(listBox2.SelectedItem.ToString());
+        }
+        
+        private void digits_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             equation += b.Text;
