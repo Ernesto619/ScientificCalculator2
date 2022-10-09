@@ -357,12 +357,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-<<<<<<< HEAD
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1200, 685);
-=======
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1071, 545);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1071, 545);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -392,21 +391,18 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-<<<<<<< HEAD
             this.statusStrip1.Size = new System.Drawing.Size(1272, 22);
-=======
             this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+            this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
             this.statusStrip1.TabIndex = 0;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-<<<<<<< HEAD
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 15);
-=======
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 16);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 16);
+
             // 
             // splitContainer1
             // 
@@ -428,13 +424,11 @@
             this.splitContainer1.Panel2.Controls.Add(this.listBox1);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip2);
-<<<<<<< HEAD
+
             this.splitContainer1.Size = new System.Drawing.Size(1200, 685);
             this.splitContainer1.SplitterDistance = 511;
-=======
             this.splitContainer1.Size = new System.Drawing.Size(1071, 545);
             this.splitContainer1.SplitterDistance = 457;
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -462,14 +456,13 @@
             this.splitContainer2.Panel2.Controls.Add(this.fromDate);
             this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Panel2MinSize = 150;
-<<<<<<< HEAD
+
             this.splitContainer2.Size = new System.Drawing.Size(511, 685);
             this.splitContainer2.SplitterDistance = 414;
             this.splitContainer2.SplitterWidth = 5;
-=======
+
             this.splitContainer2.Size = new System.Drawing.Size(457, 545);
             this.splitContainer2.SplitterDistance = 329;
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
             this.splitContainer2.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -696,13 +689,13 @@
             this.button12.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-<<<<<<< HEAD
+
             this.button12.Location = new System.Drawing.Point(384, 200);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-=======
+
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.Location = new System.Drawing.Point(345, 158);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(124, 45);
             this.button12.TabIndex = 12;
@@ -854,13 +847,13 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 4);
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
+
             this.textBox1.Location = new System.Drawing.Point(3, 4);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-=======
+
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(3, 3);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(505, 82);
@@ -969,11 +962,12 @@
             // label6
             // 
             this.label6.AutoSize = true;
-<<<<<<< HEAD
+
             this.label6.Location = new System.Drawing.Point(45, 484);
-=======
             this.label6.Location = new System.Drawing.Point(40, 367);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+            this.label6.Location = new System.Drawing.Point(40, 367);
+
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 20);
             this.label6.TabIndex = 5;
@@ -991,14 +985,17 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-<<<<<<< HEAD
+
             this.listBox2.ItemHeight = 20;
             this.listBox2.Location = new System.Drawing.Point(48, 508);
             this.listBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-=======
+
             this.listBox2.ItemHeight = 16;
             this.listBox2.Location = new System.Drawing.Point(43, 386);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+
+
+
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(595, 104);
             this.listBox2.TabIndex = 3;
@@ -1018,11 +1015,12 @@
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitter1.Name = "splitter1";
-<<<<<<< HEAD
+
             this.splitter1.Size = new System.Drawing.Size(3, 647);
-=======
             this.splitter1.Size = new System.Drawing.Size(3, 513);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+            this.splitter1.Size = new System.Drawing.Size(3, 513);
+
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -1032,11 +1030,12 @@
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.toolStripStatusLabel2});
-<<<<<<< HEAD
+
             this.statusStrip2.Location = new System.Drawing.Point(0, 647);
-=======
             this.statusStrip2.Location = new System.Drawing.Point(0, 513);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+            this.statusStrip2.Location = new System.Drawing.Point(0, 513);
+
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
             this.statusStrip2.Size = new System.Drawing.Size(685, 38);
@@ -1348,11 +1347,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
+
             this.ClientSize = new System.Drawing.Size(1272, 778);
-=======
+
             this.ClientSize = new System.Drawing.Size(1131, 622);
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
+
+
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

@@ -8,30 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
+
 using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
-=======
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
 
 namespace ScientificCalculator
 {
     public partial class Form1 : Form
     {
-<<<<<<< HEAD
+
 
        
         List<String> Filelist = new List<String>();
         GraphAlgorithms g;
-=======
+
         String calcHistory = "";
         String SavedCalcHistory = "";
         String result = "";
         String equation = "";
         double num;
 
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
+
         public Form1()
         {
             InitializeComponent();
@@ -125,7 +124,6 @@ namespace ScientificCalculator
             toolStripStatusLabel1.Text = "Good Day! Today is " + DateTime.Now;
         }
 
-<<<<<<< HEAD
         
 
         
@@ -262,8 +260,8 @@ namespace ScientificCalculator
         private void saveGraphOperation(object sender, EventArgs e)
         {
             if (listBox2.SelectedItem == null) return;
-            if (((listBox2.SelectedItem).ToString())[0] == 'M' )
-                //if selected file was done by prim's algorithm
+            if (((listBox2.SelectedItem).ToString())[0] == 'M')
+            //if selected file was done by prim's algorithm
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -280,8 +278,8 @@ namespace ScientificCalculator
                     g.WriteSSSPSolutionTo(saveFileDialog.FileName, listBox1.SelectedItem.ToString());
                 }
             }
-            listBox2.Items.Remove(listBox2.SelectedItem.ToString());   
-=======
+            listBox2.Items.Remove(listBox2.SelectedItem.ToString());
+        }
         private void digits_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -380,7 +378,6 @@ namespace ScientificCalculator
         private void about_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This is a scientific calculator with nice graphs!\n\n By: Ernesto Riera & Samuel Pellot");
->>>>>>> b322f397d1572ca43312f960d046c32d20506267
         }
     }
 }
